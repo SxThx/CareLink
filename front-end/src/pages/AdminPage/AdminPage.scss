@@ -1,0 +1,52 @@
+@import "@/App.scss";
+
+.pending, .rejected{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    .wrapper{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        .container{
+            background-color: $Dark4;
+            padding: 50px;
+            border-radius: 25px;
+            .titleContainer{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                h1{
+                    color: $DarkPrimary;
+                }
+            }
+            p{
+                color: $Dark1;
+            }
+        }
+    }
+
+}
+
+#light{
+    .pending, .rejected{
+        .wrapper{
+            .container{
+                background-color: $Light4;
+                .titleContainer{
+                    h1{
+                        color: $LightPrimary;
+                    }
+                }
+                p{
+                    color: $Dark1;
+                }
+            }
+        }
+    
+    }
+}

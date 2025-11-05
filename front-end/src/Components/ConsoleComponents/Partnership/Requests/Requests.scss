@@ -1,0 +1,89 @@
+@import "@/App.scss";
+
+.requests {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  .incoming-requests,
+  .outgoing-requests {
+    margin: 0 auto;
+    h2 {
+      color: $DarkPrimary;
+      margin: 50px 0 30px 0;
+    }
+    .cards {
+      .request-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px;
+        margin-bottom: 30px;
+        background-color: $Dark4;
+        border-radius: 15px;
+        gap: 50px;
+        .right {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          .logo {
+            img {
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+            .no-logo {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100px;
+              height: 100px;
+              background-color: $Dark3;
+              border-radius: 50%;
+              p {
+                color: $DarkPrimary;
+              }
+            }
+          }
+          .info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            h2 {
+              color: $DarkPrimary;
+              margin: 0;
+            }
+            p {
+              color: $Dark2;
+              margin: 0;
+            }
+          }
+        }
+        .left {
+          display: flex;
+          gap: 10px;
+          button {
+            all: unset;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 10px;
+          }
+          .approveBtn {
+            background-color: $CallToAction;
+            color: $LightPrimary;
+            &:hover {
+              background-color: $CallToActionHover;
+            }
+          }
+          .rejectBtn {
+            background-color: $CallToAction2;
+            color: $DarkPrimary;
+            &:hover {
+              background-color: $CallToActionHover2;
+            }
+          }
+        }
+      }
+    }
+  }
+}

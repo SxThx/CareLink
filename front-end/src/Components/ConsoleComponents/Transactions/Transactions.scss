@@ -1,0 +1,166 @@
+@import "@/App.scss";
+
+.Transactions {
+  .Container {
+    display: flex;
+    // grid-template-columns: 1fr 1fr;
+    padding: 30px;
+    margin: 30px;
+    gap: 20px;
+    .PointsItem {
+      width: 30%;
+      height: min-content;
+    }
+    .TransactionHistory {
+      width: 100%;
+    }
+    .GridItem {
+      background-color: $Dark4;
+      border-radius: 10px;
+      padding: 20px;
+      color: $Dark3;
+
+      p {
+        color: $Dark1;
+      }
+      h2 {
+        color: $DarkPrimary;
+      }
+      .GridContentContainer {
+        padding: 30px 15px 0 15px;
+        .points {
+          color: $CallToAction;
+        }
+
+        .LoadingContainer {
+          width: 100%;
+          height: 10vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          svg {
+            font-size: 80px;
+            color: $CallToAction;
+          }
+        }
+
+        .TransactionCard {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 30px;
+          .plus {
+            color: $CallToAction;
+          }
+          .minus {
+            color: $CallToAction2;
+          }
+          .purpose {
+            min-width: 200px;
+            text-align: left;
+          }
+        }
+      }
+      .pageNumbers {
+        all: unset;
+        margin-top: 40px;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: none;
+        height: 20px;
+        gap: 10px;
+
+        li {
+          cursor: pointer;
+          color: $Dark3;
+
+          &:hover {
+            color: $DarkPrimary;
+          }
+
+          &.current {
+            color: $DarkPrimary;
+            font-size: 1.3rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .Transactions {
+    .Container {
+      .GridItem {
+        background-color: $Light4;
+        color: $Light3;
+
+        p {
+          color: $Light1;
+        }
+        h2 {
+          color: $LightPrimary;
+        }
+        .GridContentContainer {
+          padding: 30px 15px 0 15px;
+
+          .LoadingContainer {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg {
+              font-size: 80px;
+              color: $CallToAction;
+            }
+          }
+
+          .TransactionCard {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            .plus {
+              color: $CallToAction;
+            }
+            .minus {
+              color: $CallToAction2;
+            }
+            .purpose {
+              min-width: 200px;
+              text-align: left;
+            }
+          }
+        }
+        .pageNumbers {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: none;
+          height: 20px;
+          gap: 20px;
+
+          li {
+            cursor: pointer;
+            color: $Light3;
+
+            &:hover {
+              color: $LightPrimary;
+            }
+
+            &.current {
+              color: $LightPrimary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

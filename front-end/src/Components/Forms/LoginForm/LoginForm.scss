@@ -1,0 +1,201 @@
+@import "@/App.scss";
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 50vw;
+  background-color: $Dark4;
+  padding: 30px;
+  border-radius: 20px;
+  .titleContainer {
+    margin-bottom: 30px;
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        color: $DarkPrimary;
+      }
+    }
+    p {
+      color: $Dark1;
+    }
+    a {
+      all: unset;
+      cursor: pointer;
+      color: $CallToAction;
+      &:hover {
+        color: $CallToActionHover;
+      }
+    }
+  }
+
+  .formMessage {
+    width: 80%;
+    color: $CallToAction;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $CallToAction;
+    border-radius: 10px;
+  }
+
+  .formErrorMessage {
+    width: 80%;
+    color: $Error;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $Error;
+    border-radius: 10px;
+  }
+
+  .title {
+    h1 {
+      color: $DarkPrimary;
+    }
+
+    p {
+      color: $Dark2;
+
+      a {
+        all: unset;
+        color: $CallToAction;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .formGroup {
+    position: relative;
+    margin-bottom: 30px;
+    width: 90%;
+    align-self: center;
+
+    label {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      padding: 0;
+      font-size: 16px;
+      color: $Dark1;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      background-color: transparent;
+    }
+
+    input {
+      all: unset;
+      width: 92%;
+      border-bottom: 1px solid $Dark1;
+      padding: 5px 10px;
+      font-size: 16px;
+      color: $DarkPrimary;
+      background-color: transparent;
+
+      &:focus + label,
+      &:not(:placeholder-shown) + label {
+        top: -25px;
+        left: 5px;
+        font-size: 12px;
+        padding: 5px;
+      }
+    }
+  }
+
+  .passwordGroup {
+    position: relative;
+
+    .togglePassword {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .togglePassword svg {
+      color: $CallToAction;
+
+      &:hover {
+        color: $CallToActionHover;
+      }
+    }
+  }
+  .forgotPasswordButton {
+    all: unset;
+    cursor: pointer;
+    color: $CallToAction;
+    width: 90%;
+    margin: 0 auto;
+    &:hover {
+      color: $CallToActionHover;
+    }
+  }
+
+  button[type="submit"] {
+    //   margin-top: 50px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    width: 90%;
+    align-self: center;
+    background-color: $CallToAction;
+    color: $LightPrimary;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+
+    &:hover {
+      background-color: $CallToActionHover;
+    }
+  }
+}
+
+#light {
+  .loginForm {
+    background-color: $Light4;
+    .titleContainer {
+      h1 {
+        color: $LightPrimary;
+      }
+    }
+    .formGroup {
+      label {
+        color: $Dark1;
+      }
+
+      input {
+        all: unset;
+        border-bottom: 1px solid $Dark1;
+        padding: 5px 10px;
+        font-size: 16px;
+        color: $LightPrimary;
+        background-color: transparent;
+        width: 92%;
+      }
+
+      button[type="submit"] {
+        background-color: $CallToAction;
+        color: $LightPrimary;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $CallToActionHover;
+          color: $DarkPrimary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+@import "@/App.scss";
+.partnership {
+  .tabs {
+    margin-top: 30px;
+    margin-left: 50px;
+    display: flex;
+    gap: 20px;
+    button {
+      background-color: $CallToAction;
+      border-radius: 10px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      &:hover {
+        background-color: $CallToActionHover;
+      }
+    }
+    button.active {
+      background-color: $CallToActionHover;
+    }
+  }
+}
+
+#light {
+  .tabs {
+    button {
+      background-color: $CallToAction;
+      &:hover {
+        background-color: $CallToActionHover;
+      }
+    }
+    button.active {
+      background-color: $CallToActionHover;
+    }
+  }
+  .explore {
+    h2 {
+      color: $LightPrimary;
+    }
+    .searchBar {
+      background-color: $Light3;
+      color: $LightPrimary;
+      input {
+        color: $LightPrimary;
+      }
+    }
+    .company-cards {
+      .company-card {
+        background-color: $Light4;
+
+        img {
+          background-color: $Light3;
+        }
+        .no-logo {
+          background-color: $Light3;
+          p {
+            color: $LightPrimary;
+          }
+        }
+        .info {
+          h3 {
+            color: $LightPrimary;
+          }
+          p {
+            color: $Light2;
+          }
+        }
+        button {
+          background-color: $CallToAction;
+          &:hover {
+            background-color: $CallToActionHover;
+          }
+        }
+      }
+    }
+    .pagination {
+      li {
+        color: $Light3;
+        &:hover {
+          color: $LightPrimary;
+        }
+
+        &.active {
+          color: $LightPrimary;
+        }
+      }
+    }
+  }
+  .requests {
+    .incoming-requests,
+    .outgoing-requests {
+      h2 {
+        color: $LightPrimary;
+      }
+      .cards {
+        .request-card {
+          background-color: $Light4;
+          .right {
+            .logo {
+              .no-logo {
+                background-color: $Light3;
+                p {
+                  color: $LightPrimary;
+                }
+              }
+            }
+            .info {
+              h2 {
+                color: $LightPrimary;
+              }
+              p {
+                color: $Dark2;
+              }
+            }
+          }
+          .left {
+            .approveBtn {
+              background-color: $CallToAction;
+              color: $LightPrimary;
+              &:hover {
+                background-color: $CallToActionHover;
+              }
+            }
+            .rejectBtn {
+              background-color: $CallToAction2;
+              color: $DarkPrimary;
+              &:hover {
+                background-color: $CallToActionHover2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .partnerships {
+    h2 {
+      color: $LightPrimary;
+      margin: 50px 0 30px 0;
+    }
+    .approved-partnerships {
+      .partnership-card {
+        background-color: $Light4;
+        .logo {
+          .no-logo {
+            background-color: $Light3;
+          }
+        }
+        .info {
+          h2 {
+            color: $LightPrimary;
+            margin: 0;
+          }
+          p {
+            color: $Dark3;
+            margin: 0;
+          }
+        }
+        .rejectBtn {
+          background-color: $CallToAction2;
+          color: $DarkPrimary;
+          &:hover {
+            background-color: $CallToActionHover2;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+ 
+@import "@/App.scss";
+.ConsoleNavbarContainer {
+  display: flex;
+  position: sticky;
+  padding: 0 20px;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  height: 80px;
+  background-color: $DarkThemeNav;
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: space-between;
+  color: $DarkPrimary;
+  .NavLeft {
+    font-weight: bold;
+    font-size: 40px;
+  }
+  .NavRight {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    .profile-icon {
+      cursor: pointer;
+      svg {
+        font-size: 30px;
+      }
+      img {
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+      }
+      .ProfilePopover {
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        background-color: $Dark4;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        color: $Dark1;
+        hr {
+          width: 100%;
+          border: solid 1px $Dark1;
+        }
+        .ProfileInfoContainer {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+    
+          .userInfo {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            justify-content: center;
+            gap: 5px;
+    
+            p {
+              margin: 0;
+            }
+          }
+    
+          img {
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+          }
+        }
+    
+        .ProfilePopoverLinks {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          padding: 10px 0 0 0;
+    
+          button {
+            padding: 10px 0;
+            text-decoration: none;
+            text-align: left;
+            font-size: 15px;
+            color: $Dark1;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            background-color: transparent;
+    
+            &:hover {
+              color: $DarkPrimary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#light{
+  .ConsoleNavbarContainer {
+    background-color: $LightThemeNav;
+    color: $LightPrimary;
+    .NavRight {
+      .profile-icon {
+        .ProfilePopover {
+          background-color: $Light4;
+          color: $Light1;
+          hr {
+            border: solid 1px $Light1;
+          }
+
+      
+          .ProfilePopoverLinks {
+
+      
+            button {
+              color: $Light1;
+              background-color: transparent;
+      
+              &:hover {
+                color: $CallToAction;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

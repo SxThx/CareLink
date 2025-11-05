@@ -1,0 +1,142 @@
+@import "@/App.scss";
+
+.adminSupport{
+    width: 90%;
+    margin: 0 auto;
+    h2{
+        color: $DarkPrimary;
+    }
+    .filter-status, .status-dropdown{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        label{
+            color: $DarkPrimary;
+        }
+        select {
+          padding: 7px 12px;
+          border-radius: 10px;
+          background-color: $Dark3;
+          color: $DarkPrimary;
+          border: none;
+          option {
+            all: unset;
+            height: 500px;
+            padding: 50px;
+            margin: 0 0 50px 0;
+            color: $DarkPrimary;
+          }}
+    }
+    .support-list{
+        .card-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            .support-card{
+                padding: 20px;
+                background-color: $Dark4;
+                border-radius: 15px;
+                .card-header{
+                    h3{
+                        color: $DarkPrimary;
+                    }
+                    p{
+                        color: $Dark1;
+                        margin: 8px 0;
+                    }
+                }
+                .card-body{
+                    p{
+                        color: $Dark3;
+                    }
+                }
+            }
+        }
+        .pagination {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            height: 20px;
+            gap: 10px;
+      
+            li {
+              cursor: pointer;
+              color: $Dark3;
+      
+              &:hover {
+                color: $DarkPrimary;
+              }
+      
+              &.active {
+                color: $DarkPrimary;
+                font-size: 1.3rem;
+                font-weight: bold;
+              }
+            }
+          }
+    }
+}
+
+#light{
+    .adminSupport{
+
+        h2{
+            color: $LightPrimary;
+        }
+        .filter-status, .status-dropdown{
+            
+            label{
+                color: $LightPrimary;
+            }
+            select {
+
+              background-color: $Light3;
+              color: $LightPrimary;
+
+              option {
+
+                color: $LightPrimary;
+              }}
+        }
+        .support-list{
+            .card-container{
+
+                .support-card{
+                    background-color: $Light4;
+                    .card-header{
+                        h3{
+                            color: $LightPrimary;
+                        }
+                        p{
+                            color: $Light1;
+                        }
+                    }
+                    .card-body{
+                        p{
+                            color: $Light2;
+                        }
+                    }
+                }
+            }
+            .pagination {
+          
+                li {
+                  cursor: pointer;
+                  color: $Light3;
+          
+                  &:hover {
+                    color: $LightPrimary;
+                  }
+          
+                  &.active {
+                    color: $LightPrimary;
+                  }
+                }
+              }
+        }
+    }
+}

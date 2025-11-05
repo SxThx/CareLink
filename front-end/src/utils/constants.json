@@ -1,0 +1,18 @@
+{
+    "transactionMessages": {
+      "partnershipSuccessful": "Partnership Bonus",
+      "campaignCreation": "Campaign Creation",
+      "signUpBonus": "Sign Up Bonus",
+      "couponRedeem": "Coupon Redeemed"
+    },
+    "transactionAmounts": {
+      "partnershipAmount": 100,
+      "campaignCreation": 10,
+      "signUpBonus": 50
+    },
+    "transactionType": {
+      "addition": "addition",
+      "deduction": "deduction"
+    }
+  }
+  

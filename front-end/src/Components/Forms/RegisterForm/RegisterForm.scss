@@ -1,0 +1,202 @@
+@import "@/App.scss";
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40vw;
+  background-color: $Dark4;
+  padding: 30px;
+  border-radius: 20px;
+  .titleContainer {
+    margin-bottom: 30px;
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h1 {
+        color: $DarkPrimary;
+      }
+    }
+    p {
+      color: $Dark2;
+    }
+    a {
+      all: unset;
+      cursor: pointer;
+      color: $CallToAction;
+      &:hover {
+        color: $CallToActionHover;
+      }
+    }
+  }
+
+  .formMessage {
+    width: 80%;
+    color: $CallToAction;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $CallToAction;
+    border-radius: 10px;
+  }
+
+  .formErrorMessage {
+    width: 80%;
+    color: $Error;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $Error;
+    border-radius: 10px;
+  }
+
+  // .title {
+  //   h1 {
+  //     color: $DarkPrimary;
+  //   }
+
+  //   p {
+  //     color: $DarkPrimary;
+
+  //     a {
+  //       all: unset;
+  //       color: $CallToAction;
+  //       font-weight: bold;
+
+  //       &:hover {
+  //         text-decoration: underline;
+  //         cursor: pointer;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .forms {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    .right,
+    .left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .formGroup {
+      position: relative;
+      margin-bottom: 30px;
+      width: 100%;
+      align-self: center;
+
+      label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 0;
+        font-size: 16px;
+        color: $Dark1;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        background-color: transparent;
+      }
+
+      input {
+        all: unset;
+        width: 92%;
+        border-bottom: 1px solid $Dark1;
+        padding: 5px 10px;
+        font-size: 16px;
+        color: $DarkPrimary;
+        background-color: transparent;
+
+        &:focus + label,
+        &:not(:placeholder-shown) + label {
+          top: -25px;
+          left: 5px;
+          font-size: 12px;
+          padding: 5px;
+        }
+      }
+    }
+  }
+
+  .passwordGroup {
+    position: relative;
+
+    .togglePassword {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .togglePassword svg {
+      color: $CallToAction;
+
+      &:hover {
+        color: $CallToActionHover;
+      }
+    }
+  }
+
+  button[type="submit"] {
+    //   margin-top: 50px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    width: 90%;
+    align-self: center;
+    background-color: $CallToAction;
+    color: $LightPrimary;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $CallToActionHover;
+    }
+  }
+}
+
+#light {
+  .registerForm {
+    background-color: $Light4;
+    .titleContainer {
+      h1 {
+        color: $LightPrimary;
+      }
+      p{
+        color: $Light2;
+      }
+    }
+    .formGroup {
+      label {
+        color: $Dark1;
+      }
+
+      input {
+        border-bottom: 1px solid $Dark1;
+      }
+
+      button[type="submit"] {
+        background-color: $CallToAction;
+        color: $LightPrimary;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $CallToActionHover;
+          color: $DarkPrimary;
+        }
+      }
+    }
+  }
+}

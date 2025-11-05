@@ -1,0 +1,296 @@
+@import "@/App.scss";
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $DarkThemeNav;
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modalContent {
+    background: $Dark4;
+    padding: 20px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    .modalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+      width: 90%;
+      padding-bottom: 50px;
+
+      h2 {
+        color: $DarkPrimary;
+      }
+
+      .closeModalButton {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: $CallToAction;
+
+        &:hover {
+          color: $CallToActionHover;
+        }
+      }
+    }
+
+    .addCompanyMemberForm {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+      gap: 20px;
+      .formMessage {
+        width: 80%;
+        color: $CallToAction;
+        margin: 0 auto;
+        padding: 20px 15px;
+        border: 1px solid $CallToAction;
+        border-radius: 10px;
+      }
+
+      .formErrorMessage {
+        width: 80%;
+        color: $Error;
+        margin: 0 auto;
+        padding: 20px 15px;
+        border: 1px solid $Error;
+        border-radius: 10px;
+      }
+
+      .forms {
+        display: flex;
+        gap: 30px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        .right,
+        .left {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .formGroup {
+          position: relative;
+          margin-bottom: 30px;
+          width: 90%;
+          align-self: center;
+
+          label {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 0;
+            font-size: 16px;
+            color: $Dark1;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+          }
+
+          input {
+            all: unset;
+            width: 92%;
+            border-bottom: 1px solid $Dark1;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: $DarkPrimary;
+            background-color: transparent;
+
+            &:focus + label,
+            &:not(:placeholder-shown) + label {
+              top: -25px;
+              left: 5px;
+              font-size: 12px;
+              padding: 5px;
+            }
+          }
+        }
+        .select {
+          margin-top: 20px;
+          label {
+            position: absolute;
+            top: -25px;
+            left: 0px;
+            padding: 0;
+            font-size: 16px;
+            color: $Dark1;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+          }
+          select {
+            padding: 7px 12px;
+            border-radius: 10px;
+            background-color: $Dark3;
+            color: $DarkPrimary;
+            border: none;
+            option {
+              all: unset;
+              height: 500px;
+              padding: 50px;
+              margin: 0 0 50px 0;
+              color: $DarkPrimary;
+            }
+          }
+        }
+
+        .passwordGroup {
+          position: relative;
+
+          .togglePassword {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          .togglePassword svg {
+            color: $CallToAction;
+
+            &:hover {
+              color: $CallToActionHover;
+            }
+          }
+        }
+      }
+
+      button[type="submit"] {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 10px;
+        width: 90%;
+        align-self: center;
+        background-color: $CallToAction;
+        color: $LightPrimary;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 30px;
+
+        &:hover {
+          background-color: $CallToActionHover;
+        }
+
+        &:disabled {
+          background-color: $Dark3;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .modalOverlay {
+    background-color: $LightThemeNav;
+
+    .modalContent {
+      background: $Light4;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+      .modalHeader {
+        h2 {
+          color: $LightPrimary;
+        }
+
+        .closeModalButton {
+          color: $CallToAction;
+
+          &:hover {
+            color: $CallToActionHover;
+          }
+        }
+      }
+
+      .formMessage {
+        color: $CallToAction;
+        border: 1px solid $CallToAction;
+      }
+
+      .formErrorMessage {
+        color: $Error;
+        border: 1px solid $Error;
+      }
+
+      .formGroup {
+        label {
+          color: $Dark1;
+        }
+
+        input {
+          border-bottom: 1px solid $Dark1;
+          color: $LightPrimary;
+        }
+      }
+      .select {
+        label {
+          color: $Dark1;
+        }
+        select {
+          background-color: $Light2;
+          color: $DarkPrimary;
+          option {
+            color: $DarkPrimary;
+          }
+        }
+      }
+
+      .passwordGroup {
+        .togglePassword {
+          .togglePassword svg {
+            color: $CallToAction;
+
+            &:hover {
+              color: $CallToActionHover;
+            }
+          }
+        }
+
+        button[type="submit"] {
+          padding: 10px 15px;
+          border: none;
+          border-radius: 10px;
+          width: 90%;
+          align-self: center;
+          background-color: $CallToAction;
+          color: $LightPrimary;
+          font-size: 16px;
+          cursor: pointer;
+          margin-top: 30px;
+
+          &:hover {
+            background-color: $CallToActionHover;
+          }
+
+          &:disabled {
+            background-color: $Dark3;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}

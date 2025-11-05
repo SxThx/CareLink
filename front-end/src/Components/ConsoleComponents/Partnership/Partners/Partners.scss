@@ -1,0 +1,110 @@
+@import "@/App.scss";
+.partnerships {
+  width: 90%;
+  margin: 0 auto;
+  h2 {
+    color: $DarkPrimary;
+    margin: 50px 0 30px 0;
+  }
+  .approved-partnerships {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    .partnership-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: $Dark4;
+      border-radius: 15px;
+      gap: 20px;
+      .logo {
+        img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .no-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 150px;
+          height: 150px;
+          background-color: $Dark3;
+          border-radius: 50%;
+          p {
+            color: $DarkPrimary;
+          }
+        }
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+
+        h2 {
+          color: $DarkPrimary;
+          margin: 0;
+        }
+        p {
+          color: $Dark3;
+          margin: 0;
+        }
+      }
+      button {
+        all: unset;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      .rejectBtn {
+        background-color: $CallToAction2;
+        color: $DarkPrimary;
+        &:hover {
+          background-color: $CallToActionHover2;
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .partnerships {
+    h2 {
+      color: $LightPrimary;
+      margin: 50px 0 30px 0;
+    }
+    .approved-partnerships {
+      .partnership-card {
+        background-color: $Light4;
+        .logo {
+          .no-logo {
+            background-color: $Light3;
+            p {
+              color: $LightPrimary;
+            }
+          }
+        }
+        .info {
+          h2 {
+            color: $LightPrimary;
+            margin: 0;
+          }
+          p {
+            color: $Dark3;
+            margin: 0;
+          }
+        }
+        .rejectBtn {
+          background-color: $CallToAction2;
+          color: $DarkPrimary;
+          &:hover {
+            background-color: $CallToActionHover2;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,409 @@
+@import "@/App.scss";
+.loading {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  svg {
+    font-size: 4em;
+    color: $CallToAction;
+  }
+}
+
+.brandInformation {
+  grid-area: brand;
+}
+
+.branchInformation {
+  grid-area: branch;
+  width: 40vw;
+}
+
+.updateLogo {
+  grid-area: logo;
+}
+
+.Brand {
+  padding-bottom: 50px;
+
+  .loading {
+    color: $Dark3;
+  }
+
+  .brandContainer {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+      "brand branch branch branch "
+      "brand branch branch branch "
+      "logo branch branch branch ";
+    gap: 30px;
+
+    .brandInformation {
+      grid-area: brand;
+      background-color: $Dark4;
+      padding: 30px;
+      border-radius: 15px;
+
+      h2 {
+        color: $DarkPrimary;
+      }
+
+      p {
+        color: $Dark3;
+      }
+
+      .brandCard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+
+        .brandLogo {
+          width: 16vw;
+          height: 16vw;
+          object-fit: cover;
+          border-radius: 50%;
+          align-self: center;
+        }
+
+        h2 {
+          margin-bottom: 20px;
+          color: $DarkPrimary;
+        }
+
+        p {
+          margin: 5px;
+          align-self: flex-start;
+        }
+
+        &:nth-child(2) {
+          margin: 0;
+        }
+
+        .editCompanyBtn {
+          all: unset;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 5px 8px;
+          border-radius: 5px;
+          cursor: pointer;
+          background-color: $CallToAction;
+          margin: 30px 0 0 0;
+          align-self: flex-start;
+
+          p {
+            margin: 0;
+            color: $LightPrimary;
+          }
+
+          &:hover {
+            background-color: $CallToActionHover;
+          }
+        }
+      }
+    }
+
+    .updateLogo {
+      background-color: $Dark4;
+      padding: 30px;
+      border-radius: 15px;
+
+      h2 {
+        color: $DarkPrimary;
+      }
+
+      p {
+        color: $Dark3;
+      }
+    }
+
+    .branchInformation {
+      grid-area: branch;
+      background-color: $Dark4;
+      padding: 30px;
+      border-radius: 15px;
+
+      .addBranchBtn {
+        all: unset;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: $CallToAction;
+        margin-bottom: 20px;
+
+        p {
+          margin: 0;
+          color: $LightPrimary;
+        }
+
+        &:hover {
+          background-color: $CallToActionHover;
+        }
+      }
+
+      h2 {
+        color: $DarkPrimary;
+      }
+
+      p {
+        color: $Dark3;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+
+        thead {
+          tr {
+            background-color: transparent;
+
+            th {
+              padding: 30px;
+              text-align: center;
+              font-weight: bold;
+              color: $DarkPrimary;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            color: $Dark3;
+
+            &:nth-child(even) {
+              background-color: $Dark3;
+              color: $Dark1;
+            }
+
+            .addPointsBtn {
+              color: $CallToAction;
+
+              &:hover {
+                color: $CallToActionHover;
+              }
+            }
+
+            .deductPointsBtn {
+              color: $CallToAction2;
+
+              &:hover {
+                color: $CallToActionHover2;
+              }
+            }
+
+            td {
+              padding: 5px;
+              text-align: center;
+
+              .branchList {
+                all: unset;
+                position: absolute;
+                z-index: 2;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+                background-color: $LightPrimary;
+                text-align: left;
+                padding: 10px;
+                border-radius: 10px;
+              }
+
+              .branchBtn {
+                color: $CallToAction;
+
+                &:hover {
+                  color: $CallToActionHover;
+                }
+              }
+
+              img {
+                width: 50px;
+                height: 50px !important;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 50%;
+              }
+
+              .noImage {
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px !important;
+                background-color: $Dark2;
+                color: $DarkPrimary;
+                border-radius: 50%;
+                font-size: 10px;
+              }
+
+              button {
+                all: unset;
+                padding: 10px;
+                cursor: pointer;
+              }
+
+              .editBtn {
+                color: $CallToAction;
+
+                &:hover {
+                  color: $CallToActionHover;
+                }
+              }
+
+              .deleteBtn {
+                color: rgb(255, 92, 92);
+
+                &:hover {
+                  color: rgb(131, 11, 11);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .Brand {
+    .brandContainer {
+      .brandInformation {
+        background-color: $Light4;
+
+        h2 {
+          color: $LightPrimary;
+        }
+
+        p {
+          color: $Dark3;
+        }
+
+        .brandCard {
+          h2 {
+            color: $LightPrimary;
+          }
+        }
+      }
+
+      .updateLogo {
+        background-color: $Light4;
+        padding: 30px;
+        border-radius: 15px;
+
+        h2 {
+          color: $LightPrimary;
+        }
+
+        p {
+          color: $Dark3;
+        }
+      }
+
+      .branchInformation {
+        background-color: $Light4;
+
+        .addBranchBtn {
+          background-color: $CallToAction;
+
+          p {
+            color: $LightPrimary;
+          }
+
+          &:hover {
+            background-color: $CallToActionHover;
+          }
+        }
+
+        h2 {
+          color: $LightPrimary;
+        }
+
+        p {
+          color: $Dark3;
+        }
+
+        table {
+          thead {
+            tr {
+              background-color: transparent;
+
+              th {
+                color: $LightPrimary;
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              color: $Dark3;
+
+              &:nth-child(even) {
+                background-color: $Light3;
+                color: $Dark3;
+              }
+
+              .addPointsBtn {
+                color: $CallToAction;
+
+                &:hover {
+                  color: $CallToActionHover;
+                }
+              }
+
+              .deductPointsBtn {
+                color: $CallToAction2;
+
+                &:hover {
+                  color: $CallToActionHover2;
+                }
+              }
+
+              td {
+                padding: 5px;
+                text-align: center;
+
+                .branchBtn {
+                  color: $CallToAction;
+
+                  &:hover {
+                    color: $CallToActionHover;
+                  }
+                }
+
+                .editBtn {
+                  color: $CallToAction;
+
+                  &:hover {
+                    color: $CallToActionHover;
+                  }
+                }
+
+                .deleteBtn {
+                  color: rgb(255, 92, 92);
+
+                  &:hover {
+                    color: rgb(131, 11, 11);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

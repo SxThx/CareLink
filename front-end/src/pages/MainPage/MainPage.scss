@@ -1,0 +1,58 @@
+@import "@/App.scss";
+
+.MainPage {
+  height: 100vh;
+  background-color: $LightPrimary;
+  overflow-y: hidden;
+  .Container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .banner {
+      width: 50vw;
+      img {
+        width: 50vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      h1 {
+        color: $CallToAction;
+        font-size: 3em;
+        margin: 0;
+      }
+      h2 {
+        color: $DarkPrimary;
+        margin: 0;
+      }
+      p {
+        color: $Dark3;
+        margin: 0;
+        width: 400px;
+        text-align: center;
+      }
+      .buttons {
+        display: flex;
+        gap: 15px;
+        margin: 0;
+        button {
+          all: unset;
+          padding: 5px 10px;
+          cursor: pointer;
+          border-radius: 10px;
+          border: $CallToAction 1px solid;
+          color: $DarkPrimary;
+          &:hover {
+            background-color: $CallToAction;
+            color: $LightPrimary;
+          }
+        }
+      }
+    }
+  }
+}

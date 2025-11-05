@@ -1,0 +1,415 @@
+@import "@/App.scss";
+
+.companyUpdateForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: $Dark4;
+  padding: 30px;
+  border-radius: 25px;
+  margin: 50px;
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    h1 {
+      color: $DarkPrimary;
+    }
+  }
+
+  .title {
+    h1 {
+      color: $DarkPrimary;
+    }
+
+    p {
+      color: $Dark2;
+
+      a {
+        all: unset;
+        color: $CallToAction;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .forms2 {
+    width: 100%;
+    margin-top: 50px;
+    justify-self: center;
+    .branches {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      margin: 0 auto;
+      .branchForm {
+        h3 {
+          color: $Dark1;
+          margin-bottom: 30px;
+        }
+        .formGroup {
+          position: relative;
+          margin-bottom: 40px;
+          width: 100%;
+          align-self: center;
+
+          label {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            padding: 0;
+            font-size: 16px;
+            color: $Dark1;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            background-color: transparent;
+          }
+
+          input {
+            all: unset;
+            width: 92%;
+            border-bottom: 1px solid $Dark1;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: $DarkPrimary;
+            background-color: transparent;
+
+            &:focus + label,
+            &:not(:placeholder-shown) + label {
+              top: -25px;
+              left: 5px;
+              font-size: 12px;
+              padding: 5px;
+            }
+          }
+          textarea {
+            background-color: $Dark4;
+            border: 2px solid $Dark1;
+            border-radius: 10px;
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            color: $DarkPrimary;
+            padding: 10px;
+          }
+        }
+      }
+    }
+    .formGroup {
+      position: relative;
+      margin-bottom: 40px;
+      width: 100%;
+      align-self: center;
+
+      label {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 0;
+        font-size: 16px;
+        color: $Dark1;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        background-color: transparent;
+      }
+
+      input {
+        all: unset;
+        width: 92%;
+        border-bottom: 1px solid $Dark1;
+        padding: 5px 10px;
+        font-size: 16px;
+        color: $DarkPrimary;
+        background-color: transparent;
+
+        &:focus + label,
+        &:not(:placeholder-shown) + label {
+          top: -25px;
+          left: 5px;
+          font-size: 12px;
+          padding: 5px;
+        }
+      }
+      textarea {
+        background-color: $Dark4;
+        border: 2px solid $Dark1;
+        border-radius: 10px;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        color: $DarkPrimary;
+        padding: 10px;
+      }
+    }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    .forms {
+      .formGroup {
+        position: relative;
+        margin-bottom: 40px;
+        width: 90%;
+        align-self: center;
+
+        label {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          padding: 0;
+          font-size: 16px;
+          color: $Dark1;
+          pointer-events: none;
+          transition: all 0.3s ease;
+          background-color: transparent;
+        }
+
+        input {
+          all: unset;
+          width: 92%;
+          border-bottom: 1px solid $Dark1;
+          padding: 5px 10px;
+          font-size: 16px;
+          color: $DarkPrimary;
+          background-color: transparent;
+
+          &:focus + label,
+          &:not(:placeholder-shown) + label {
+            top: -25px;
+            left: 5px;
+            font-size: 12px;
+            padding: 5px;
+          }
+        }
+        textarea {
+          background-color: $Dark4;
+          border: 2px solid $Dark1;
+          border-radius: 10px;
+          font-family: "Roboto", sans-serif;
+          font-size: 16px;
+          color: $DarkPrimary;
+          padding: 10px;
+        }
+      }
+      .haveBranches {
+        all: unset;
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 40%;
+        align-items: center;
+        gap: 10px;
+
+        label {
+          all: unset;
+          font-size: 16px;
+          color: $Dark1;
+        }
+        select {
+          padding: 7px 12px;
+          border-radius: 10px;
+          background-color: $Dark3;
+          color: $DarkPrimary;
+          border: none;
+          option {
+            all: unset;
+            height: 500px;
+            padding: 50px;
+            margin: 0 0 50px 0;
+            color: $DarkPrimary;
+          }
+        }
+      }
+    }
+
+    .DropArea {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 10px;
+        // border-radius: 100%;
+      }
+
+      p {
+        margin: 0;
+        color: $Dark2;
+      }
+
+      .with-image {
+        border-color: $CallToAction;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  button[type="submit"] {
+    margin-top: 50px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    background-color: $CallToAction;
+    color: $LightPrimary;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $CallToActionHover;
+    }
+  }
+
+  .formMessage {
+    width: 80%;
+    color: $CallToAction;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $CallToAction;
+    border-radius: 10px;
+  }
+  .formErrorMessage {
+    width: 80%;
+    color: $Error;
+    margin: 0 auto;
+    padding: 20px 15px;
+    border: 1px solid $Error;
+    border-radius: 10px;
+  }
+}
+
+#light {
+  .companyUpdateForm {
+    background-color: $Light4;
+    .titleContainer {
+      h1 {
+        color: $LightPrimary;
+      }
+    }
+
+    .title {
+      h1 {
+        color: $LightPrimary;
+      }
+
+      p {
+        color: $Dark2;
+
+        a {
+          color: $CallToAction;
+        }
+      }
+    }
+    .forms2 {
+      .branches {
+        .branchForm {
+          h3 {
+            color: $Light1;
+          }
+          .formGroup {
+            label {
+              color: $Light1;
+            }
+
+            input {
+              border-bottom: 1px solid $Light1;
+              color: $LightPrimary;
+              background-color: transparent;
+            }
+            textarea {
+              background-color: $Light2;
+              border: 2px solid $Light1;
+              color: $LightPrimary;
+            }
+          }
+        }
+      }
+      .formGroup {
+        label {
+          color: $Light1;
+        }
+
+        input {
+          border-bottom: 1px solid $Light1;
+          color: $LightPrimary;
+          background-color: transparent;
+        }
+        textarea {
+          background-color: $Light3;
+          border: 2px solid $Light2;
+          color: $LightPrimary;
+        }
+      }
+    }
+    .grid {
+      .forms {
+        .formGroup {
+          label {
+            color: $Light1;
+          }
+
+          input {
+            border-bottom: 1px solid $Light1;
+            color: $LightPrimary;
+            background-color: transparent;
+          }
+          textarea {
+            background-color: $Light3;
+            border: 2px solid $Light2;
+            color: $LightPrimary;
+          }
+        }
+        .haveBranches {
+          label {
+            color: $Light1;
+          }
+          select {
+            background-color: $Light3;
+            color: $LightPrimary;
+
+            option {
+              color: $LightPrimary;
+            }
+          }
+        }
+      }
+
+      .DropArea {
+        border: 2px dashed $Light2;
+
+        p {
+          color: $Dark2;
+        }
+
+        .with-image {
+          border-color: $CallToAction;
+        }
+      }
+    }
+
+    button[type="submit"] {
+      background-color: $CallToAction;
+      color: $LightPrimary;
+
+      &:hover {
+        background-color: $CallToActionHover;
+      }
+    }
+  }
+}

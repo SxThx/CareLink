@@ -1,0 +1,68 @@
+@import "@/App.scss";
+
+.redeemForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    background-color: $Dark4;
+    padding: 30px;
+    border-radius: 20px;
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    .titleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 0 30px 0;
+
+        h1 {
+            color: $DarkPrimary;
+        }
+    }
+
+    .codeContainer {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+
+        input {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            text-align: center;
+            border: none;
+            border-radius: 0.25rem;
+        }
+    }
+
+    button[type="submit"] {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 10px;
+        background-color: $CallToAction;
+        color: $DarkPrimary;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: $CallToActionHover;
+    }
+}
+
+#light {
+    .redeemForm {
+        background-color: $Light4;
+
+        .titleContainer {
+            h1 {
+                color: $LightPrimary;
+            }
+        }
+    }
+}

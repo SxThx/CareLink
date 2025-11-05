@@ -1,0 +1,35 @@
+
+$CallToAction: rgb(112, 181, 255);
+$CallToAction2: rgb(255, 0, 0);
+$CallToActionHover: rgb(69, 93, 159);
+$CallToActionHover2:rgb(179, 0, 0);
+$Error: rgb(255, 166, 166);
+$ErrorHover: rgb(196, 99, 99);
+
+$LightThemeBG: rgb(255, 255, 255);
+$LightThemeNav: rgb(255, 255, 255,0.5);
+$LightPrimary: rgb(0, 0, 0);
+$Light1: rgb(78, 78, 78);
+$Light2: rgb(111, 111, 111);
+$Light3: rgb(211, 211, 211);
+$Light4: rgb(235, 235, 235);
+
+$DarkThemeBG: rgb(0, 0, 0);
+$DarkThemeNav: rgba(0, 0, 0, 0.5);
+$DarkPrimary: rgb(255, 255, 255);
+$Dark1: rgb(167, 167, 167);
+$Dark2: rgb(162, 162, 162);
+$Dark3: rgb(77, 77, 77);
+$Dark4: rgb(34, 34, 34);
+
+
+
+
+
+#light {
+background-color: $LightThemeBG;
+}
+
+#dark {
+background-color: $DarkThemeBG;
+}

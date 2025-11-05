@@ -1,0 +1,206 @@
+@import "@/App.scss";
+.explore {
+  h2 {
+    color: $DarkPrimary;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+  .searchBar {
+    all: unset;
+    margin-left: 50px;
+    padding: 6px 20px;
+    border-radius: 10px;
+    background-color: $Dark3;
+    color: $DarkPrimary;
+    border: none;
+    margin-bottom: 30px;
+    width: 40vw;
+    input {
+      all: unset;
+      height: 500px;
+      padding: 50px;
+      margin: 0 0 50px 0;
+      color: $DarkPrimary;
+    }
+  }
+  .loading {
+    margin-top: 10vh;
+  }
+  .company-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 50px;
+    .company-card {
+      background-color: $Dark4;
+      padding: 30px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        align-self: center;
+        background-color: $Dark3;
+      }
+      .no-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        background-color: $Dark3;
+        margin: 0 auto;
+        border-radius: 50%;
+        p {
+          color: $DarkPrimary;
+        }
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        margin: 20px 0;
+        h3 {
+          color: $DarkPrimary;
+          margin: 0;
+        }
+        p {
+          color: $Dark2;
+          margin: 0;
+        }
+      }
+      button {
+        border-radius: 10px;
+        padding: 7px 10px;
+        border: none;
+        cursor: pointer;
+        color: $LightPrimary;
+      }
+      .add-partnership-btn {
+        background-color: $CallToAction;
+        &:hover {
+          background-color: $CallToActionHover;
+        }
+      }
+      .partnered-btn,
+      .pending-btn {
+        cursor: default;
+        background-color: rgb(89, 89, 89);
+      }
+      .approve-btn {
+        background-color: rgb(112, 255, 148);
+        &:hover {
+          background-color: rgb(85, 180, 109);
+        }
+      }
+    }
+  }
+  .pagination {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: none;
+    height: 20px;
+    gap: 10px;
+    margin-bottom: 50px;
+
+    li {
+      cursor: pointer;
+      color: $Dark3;
+
+      &:hover {
+        color: $DarkPrimary;
+      }
+
+      &.active {
+        color: $DarkPrimary;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+#light {
+  .explore {
+    h2 {
+      color: $LightPrimary;
+    }
+    .searchBar {
+      background-color: $Light3;
+      color: $LightPrimary;
+      input {
+        color: $LightPrimary;
+      }
+    }
+    .company-cards {
+      .company-card {
+        background-color: $Light4;
+
+        img {
+          background-color: $Light3;
+        }
+        .no-logo {
+          background-color: $Light3;
+          p {
+            color: $LightPrimary;
+          }
+        }
+        .info {
+          h3 {
+            color: $LightPrimary;
+          }
+          p {
+            color: $Light2;
+          }
+        }
+        button {
+          border-radius: 10px;
+          padding: 7px 10px;
+          border: none;
+          cursor: pointer;
+          color: $DarkPrimary;
+        }
+        .add-partnership-btn {
+          background-color: $CallToAction;
+          &:hover {
+            background-color: $CallToActionHover;
+          }
+        }
+        .partnered-btn,
+        .pending-btn {
+          cursor: default;
+          color: $Light3;
+          background-color: rgb(89, 89, 89);
+        }
+        .approve-btn {
+          color: $LightPrimary;
+          background-color: rgb(112, 255, 148);
+          &:hover {
+            background-color: rgb(85, 180, 109);
+          }
+        }
+      }
+    }
+    .pagination {
+      li {
+        color: $Light3;
+        &:hover {
+          color: $LightPrimary;
+        }
+
+        &.active {
+          color: $LightPrimary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@import "@/App.scss";
+.supportRequestForm{
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: $Dark4;
+    border-radius: 20px;
+    margin-top: 50px;
+    h2{
+        color: $DarkPrimary;
+        margin: 10px 0 50px 0;
+    }
+    .formGroup {
+        position: relative;
+        width: 90%;
+        align-self: center;
+        margin: 0 auto;
+        margin-bottom: 40px;
+
+        label {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          padding: 0;
+          font-size: 16px;
+          color: $Dark1;
+          pointer-events: none;
+          transition: all 0.3s ease;
+          background-color: transparent;
+        }
+
+        input {
+          all: unset;
+          width: 95%;
+          border-bottom: 1px solid $Dark1;
+          padding: 5px 10px;
+          font-size: 16px;
+          color: $DarkPrimary;
+          background-color: transparent;
+
+          &:focus + label,
+          &:not(:placeholder-shown) + label {
+            top: -25px;
+            left: 5px;
+            font-size: 12px;
+            padding: 5px;
+          }
+        }
+        textarea {
+            background-color: $Dark4;
+            border: 2px solid $Dark1;
+            border-radius: 10px;
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            color: $DarkPrimary;
+            margin-top: 30px;
+          }
+        }
+        .buttons{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+              all: unset;
+              background-color: $CallToAction;
+              width: 90%;
+              text-align: center;
+              height: 40px;
+              border-radius: 15px;
+              cursor: pointer;
+              &:hover{
+                background-color: $CallToActionHover;
+              }
+            }
+        }
+}
+
+#light{
+  .supportRequestForm{
+    background-color: $Light4;
+    h2{
+        color: $LightPrimary;
+    }
+    .formGroup {
+
+        input {
+  
+          border-bottom: 1px solid $Light1;
+          color: $LightPrimary;
+          background-color: transparent;
+        }
+        textarea {
+            background-color: $Light4;
+            border: 1px solid $Light1;
+            color: $LightPrimary;
+          }
+        }
+        .buttons{
+            button{
+              all: unset;
+              background-color: $CallToAction;
+              width: 90%;
+              text-align: center;
+              height: 40px;
+              border-radius: 15px;
+              cursor: pointer;
+              &:hover{
+                background-color: $CallToActionHover;
+              }
+            }
+        }
+}
+}

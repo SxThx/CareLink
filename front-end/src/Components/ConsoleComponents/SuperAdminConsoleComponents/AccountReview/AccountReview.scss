@@ -1,0 +1,339 @@
+@import "@/App.scss";
+
+.accountReview {
+  background-color: $Dark4;
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  margin: 0 auto;
+  h2 {
+    color: $DarkPrimary;
+  }
+  p {
+    color: $Dark1;
+    margin-bottom: 50px;
+  }
+
+  .statusFilter {
+    display: flex;
+    align-items: center;
+    select {
+      padding: 7px 12px;
+      border-radius: 10px 0 0 10px;
+      background-color: $Dark3;
+      color: $DarkPrimary;
+      border: none;
+      border-right: 1px solid $Dark2;
+      margin-bottom: 30px;
+      option {
+        all: unset;
+        height: 500px;
+        padding: 50px;
+        margin: 0 0 50px 0;
+        color: $DarkPrimary;
+      }
+    }
+    .searchBar {
+      all: unset;
+      padding: 6px 20px;
+      border-radius: 0 10px 10px 0;
+      background-color: $Dark3;
+      color: $DarkPrimary;
+      border: none;
+      margin-bottom: 30px;
+      width: 40vw;
+      input {
+        all: unset;
+        height: 500px;
+        padding: 50px;
+        margin: 0 0 50px 0;
+        color: $DarkPrimary;
+      }
+    }
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    thead {
+      tr {
+        background-color: transparent;
+        th {
+          padding: 5px;
+          text-align: center;
+          font-weight: bold;
+          color: $DarkPrimary;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        color: $Dark3;
+        &:nth-child(even) {
+          background-color: $Dark3;
+          color: $Dark1;
+        }
+
+        td {
+          padding: 5px;
+          text-align: center;
+
+          img {
+            width: 50px;
+            height: 50px !important;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+          }
+
+          .noImage {
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px !important;
+            background-color: $Dark2;
+            color: $DarkPrimary;
+            border-radius: 50%;
+            font-size: 10px;
+          }
+
+          button {
+            all: unset;
+            padding: 10px;
+            cursor: pointer;
+          }
+
+          .approveBtn {
+            color: $CallToAction;
+
+            &:hover {
+              color: $CallToActionHover;
+            }
+          }
+
+          .rejectBtn,
+          .revokeBtn {
+            color: rgb(255, 92, 92);
+
+            &:hover {
+              color: rgb(131, 11, 11);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pageNumbers {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: none;
+    height: 20px;
+    gap: 10px;
+
+    li {
+      cursor: pointer;
+      color: $Dark3;
+
+      &:hover {
+        color: $DarkPrimary;
+      }
+
+      &.current {
+        color: $DarkPrimary;
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.skeleton-row {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #838383;
+  background-image: linear-gradient(90deg, #838383, #ffffff, #838383);
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 0.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+#light {
+  .accountReview {
+    background-color: $Light4;
+    padding: 30px;
+    border-radius: 25px;
+    width: 90%;
+    margin: 0 auto;
+
+    h2 {
+      color: $LightPrimary;
+    }
+
+    p {
+      color: $Light1;
+    }
+
+    .statusFilter {
+      select {
+        background-color: $Light3;
+        color: $LightPrimary;
+        border: none;
+        border-right: 1px solid $Dark2;
+
+        option {
+          color: $LightPrimary;
+        }
+      }
+      .searchBar {
+        background-color: $Light3;
+        color: $LightPrimary;
+        input {
+          color: $LightPrimary;
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $Light3;
+          color: $Light1;
+        }
+      }
+    }
+
+    th {
+      color: $LightPrimary;
+    }
+
+    .pageNumbers {
+      li {
+        cursor: pointer;
+        color: $Light3;
+
+        &:hover {
+          color: $LightPrimary;
+        }
+
+        &.current {
+          color: $LightPrimary;
+        }
+      }
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $DarkThemeNav;
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 4;
+
+      .modalContent {
+        background-color: $Light4;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+        h1 {
+          color: $LightPrimary;
+        }
+
+        .editMemberForm {
+          label {
+            color: $Dark1;
+          }
+
+          input {
+            color: $LightPrimary;
+            background-color: $Light3;
+            border: none;
+          }
+
+          select {
+            background-color: $Light3;
+            color: $LightPrimary;
+          }
+
+          .formButtons {
+            :first-child {
+              background-color: $CallToAction2;
+              color: $DarkPrimary;
+
+              &:hover {
+                background-color: $CallToActionHover2;
+              }
+            }
+
+            :nth-child(2) {
+              background-color: $CallToAction;
+              color: $DarkPrimary;
+
+              &:hover {
+                background-color: $CallToActionHover;
+              }
+            }
+          }
+        }
+
+        .DropArea {
+          border: 2px dashed $Dark3;
+
+          &:hover {
+            border: 2px dashed $DarkPrimary;
+          }
+
+          &.with-image {
+            img {
+              width: 80px;
+              height: 80px;
+              object-fit: cover;
+              object-position: center;
+              border-radius: 50%;
+            }
+          }
+
+          p {
+            color: #666;
+          }
+        }
+
+        input[type="file"] {
+          display: none;
+        }
+      }
+
+      .close {
+        float: right;
+        font-size: 50px;
+        cursor: pointer;
+
+        &:hover {
+          color: $LightPrimary;
+        }
+      }
+    }
+  }
+}
