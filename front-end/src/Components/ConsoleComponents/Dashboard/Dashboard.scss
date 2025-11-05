@@ -54,6 +54,7 @@
               margin: 20px 0;
               h2 {
                 margin-bottom: 20px;
+                align-self: flex-start;
               }
               p {
                 margin: 5px;
@@ -120,6 +121,204 @@
       }
     }
   }
+  
+  .PatientSearchContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .inputGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $Dark1;
+      }
+
+      .inputRow {
+        display: flex;
+        gap: 10px;
+
+        input {
+          flex: 1;
+          padding: 10px 12px;
+          border-radius: 8px;
+          border: 1px solid $Dark4;
+          background-color: $Dark3;
+          color: $DarkPrimary;
+          font-size: 1rem;
+          letter-spacing: 2px;
+
+          &:focus {
+            outline: 2px solid $CallToAction;
+            border-color: transparent;
+          }
+
+          &::placeholder {
+            letter-spacing: normal;
+          }
+        }
+
+        .clearSearchButton {
+          all: unset;
+          margin: 0;
+          padding: 10px 14px;
+          background-color: transparent;
+          border-radius: 8px;
+          border: 1px solid $Dark4;
+          color: $Dark2;
+          cursor: pointer;
+          transition: background-color 0.2s ease, color 0.2s ease;
+
+          &:hover {
+            background-color: $Dark3;
+            color: $DarkPrimary;
+          }
+        }
+      }
+    }
+
+    .resultsList {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .resultItem {
+        all: unset;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid $Dark4;
+        background-color: $Dark3;
+        cursor: pointer;
+        transition: border-color 0.2s ease, transform 0.1s ease, background-color 0.2s ease;
+
+        .name {
+          font-weight: 600;
+          color: $DarkPrimary;
+        }
+
+        .meta {
+          font-size: 0.85rem;
+          color: $Dark1;
+        }
+
+        &:hover {
+          border-color: $CallToAction;
+          transform: translateY(-2px);
+        }
+
+        &.selected {
+          border-color: $CallToAction;
+          background-color: rgba($CallToAction, 0.1);
+        }
+      }
+
+      .placeholder {
+        font-size: 0.9rem;
+        color: $Dark1;
+        padding: 10px 0;
+      }
+
+      .errorMessage {
+        color: $Error;
+      }
+    }
+
+  }
+
+  .PatientDetailsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .detailsCard {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: $Dark3;
+      border: 1px solid $Dark4;
+    }
+
+    .detailsHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: $DarkPrimary;
+      }
+
+      .clearSelectionButton {
+        all: unset;
+        margin: 0;
+        cursor: pointer;
+        font-size: 0.85rem;
+        color: $Error;
+        padding: 6px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba($Error, 0.5);
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+          background-color: rgba($Error, 0.15);
+        }
+      }
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px 16px;
+      margin: 0;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba($Dark1, 0.2);
+      }
+
+      dt {
+        font-size: 0.8rem;
+        color: $Dark1;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      dd {
+        margin: 0;
+        color: $DarkPrimary;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+    }
+
+    .emptyState {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px dashed $Dark4;
+      background-color: transparent;
+
+      p {
+        margin: 0;
+        color: $Dark1;
+      }
+    }
+  }
+
 }
 
 #light {
@@ -174,6 +373,112 @@
             }
           }
         }
+      }
+    }
+  }
+
+  .PatientSearchContent {
+    .inputGroup {
+      label {
+        color: $Light2;
+      }
+
+      .inputRow {
+        input {
+          border: 1px solid $Light3;
+          background-color: $Light4;
+          color: $LightPrimary;
+
+          &:focus {
+            outline: 2px solid $CallToAction;
+          }
+        }
+
+        .clearSearchButton {
+          border: 1px solid $Light3;
+          color: $Light2;
+
+          &:hover {
+            background-color: $Light3;
+            color: $LightPrimary;
+          }
+        }
+      }
+    }
+
+    .resultsList {
+      .resultItem {
+        border: 1px solid $Light3;
+        background-color: $Light4;
+
+        .name {
+          color: $LightPrimary;
+        }
+
+        .meta {
+          color: $Light2;
+        }
+
+        &:hover {
+          border-color: $CallToAction;
+        }
+
+        &.selected {
+          background-color: rgba($CallToAction, 0.12);
+        }
+      }
+
+      .placeholder {
+        color: $Light2;
+      }
+
+      .errorMessage {
+        color: $Error;
+      }
+    }
+
+  }
+
+  .PatientDetailsContent {
+    .detailsCard {
+      background-color: $Light4;
+      border: 1px solid $Light3;
+    }
+
+    .detailsHeader {
+      h3 {
+        color: $LightPrimary;
+      }
+
+      .clearSelectionButton {
+        color: $Error;
+        border: 1px solid rgba($Error, 0.5);
+
+        &:hover {
+          background-color: rgba($Error, 0.15);
+        }
+      }
+    }
+
+    dl {
+      div {
+        border-bottom: 1px solid rgba($Light2, 0.2);
+      }
+
+      dt {
+        color: $Light2;
+      }
+
+      dd {
+        color: $LightPrimary;
+      }
+    }
+
+    .emptyState {
+      border-color: $Light3;
+
+      p {
+        color: $Light2;
       }
     }
   }

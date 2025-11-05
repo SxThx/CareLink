@@ -9,20 +9,14 @@ import {
   faChevronCircleLeft,
   faExternalLinkAlt,
   faSignOutAlt,
-  faTools,
   faUserCog,
   faWallet,
-  faMoneyBill,
-  faExchangeAlt,
-  faMoneyCheck,
-  faMoneyCheckAlt,
   faHandshake,
-  faHand,
   faHeadset
 } from "@fortawesome/free-solid-svg-icons";
 import SiteLogo from "../../assets/Img/logo.png";
 import DashboardComponent from "#/ConsoleComponents/Dashboard/Dashboard";
-import AccountComponent from "#/ConsoleComponents/Account/Account";
+import PatientVitalComponent from "#/ConsoleComponents/PatientVital/PatientVital";
 import BrandComponent from "../ConsoleComponents/Brand/Brand";
 import PromotionsComponent from "../ConsoleComponents/Promotions/Promotions";
 import AdminManagementComponent from "../ConsoleComponents/AdminManagement/AdminManagement";
@@ -39,6 +33,15 @@ import "./ConsoleBar.scss";
 const ConsoleBar = () => {
   const [showText, setShowText] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Dashboard");
+  const [hasSelectedPatient, setHasSelectedPatient] = useState(() => {
+    try {
+      const stored = localStorage.getItem("selectedPatient");
+      return Boolean(stored);
+    } catch (error) {
+      console.warn("Unable to read stored patient selection:", error);
+      return false;
+    }
+  });
   const selectedComponentRef = useRef(null);
 
   const userRole = JSON.parse(localStorage.getItem("userData")).role;
@@ -65,9 +68,14 @@ const ConsoleBar = () => {
   const renderSelectedComponent = () => {
     switch (selectedItem) {
       case "Dashboard":
-        return <DashboardComponent onItemClick={handleItemClick} />;
-      case "Account":
-        return <AccountComponent />;
+        return (
+          <DashboardComponent
+            onItemClick={handleItemClick}
+            onPatientSelectionChange={setHasSelectedPatient}
+          />
+        );
+      case "Patient Vitals":
+        return <PatientVitalComponent />;
       case "Promotions":
         return <PromotionsComponent />;
       case "Company":
@@ -116,6 +124,46 @@ const ConsoleBar = () => {
     };
   }, [showText]);
 
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === "selectedPatient") {
+        setHasSelectedPatient(Boolean(event.newValue));
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasSelectedPatient && selectedItem !== "Dashboard") {
+      setSelectedItem("Dashboard");
+    }
+  }, [hasSelectedPatient, selectedItem]);
+
+  const shouldDisableNavigation = !hasSelectedPatient;
+
+  const protectedNavItem = (label, icon, onClick, isHidden) => {
+    if (shouldDisableNavigation && !isHidden) {
+      return (
+        <li className="disabled">
+          <FontAwesomeIcon icon={icon} /> {showText && label}
+        </li>
+      );
+    }
+
+    return (
+      <li
+        className={selectedItem === label ? "selected" : ""}
+        onClick={() => onClick(label)}
+      >
+        <FontAwesomeIcon icon={icon} /> {showText && label}
+      </li>
+    );
+  };
+
   return (
     <div className="AdminConsoleBody">
       <div className={`admin-sidebar ${showText ? "show-text" : ""}`}>
@@ -144,82 +192,67 @@ const ConsoleBar = () => {
           >
             <FontAwesomeIcon icon={faChartBar} /> {showText && "Dashboard"}
           </li>
-          <li
-            className={selectedItem === "Account" ? "selected" : ""}
-            onClick={() => handleItemClick("Account")}
-          >
-            <FontAwesomeIcon icon={faUser} /> {showText && "Account"}
-          </li>
+          {shouldDisableNavigation ? null : (
+            <li
+              className={selectedItem === "Patient Vitals" ? "selected" : ""}
+              onClick={() => handleItemClick("Patient Vitals")}
+            >
+              <FontAwesomeIcon icon={faUser} /> {showText && "Patient Vitals"}
+            </li>
+          )}
           {userRole === "super_admin" ? (
             <>
-              <li
-                className={selectedItem === "Account Review" ? "selected" : ""}
-                onClick={() => handleItemClick("Account Review")}
-              >
-                <FontAwesomeIcon icon={faUserCog} />{" "}
-                {showText && "Account Review"}
-              </li>
-              <li
-                className={selectedItem === "Companies" ? "selected" : ""}
-                onClick={() => handleItemClick("Companies")}
-              >
-                <FontAwesomeIcon icon={faBuilding} /> {showText && "Companies"}
-              </li>
-              <li
-                className={selectedItem === "Admin Support" ? "selected" : ""}
-                onClick={() => handleItemClick("Admin Support")}
-              >
-                <FontAwesomeIcon icon={faHeadset} /> {showText && "Support"}
-              </li>
+              {shouldDisableNavigation
+                ? null
+                : protectedNavItem("Account Review", faUserCog, handleItemClick, false)}
+              {shouldDisableNavigation
+                ? null
+                : protectedNavItem("Companies", faBuilding, handleItemClick, false)}
+              {shouldDisableNavigation
+                ? null
+                : protectedNavItem("Admin Support", faHeadset, handleItemClick, false)}
             </>
           ) : (
             <>
-
-              <li
-                className={selectedItem === "Promotions" ? "selected" : ""}
-                onClick={() => handleItemClick("Promotions")}
-              >
-                <FontAwesomeIcon icon={faTags} /> {showText && "Promotions"}
-              </li>
-              {userRole !== "company_editor" && (
+              {shouldDisableNavigation
+                ? null
+                : protectedNavItem("Promotions", faTags, handleItemClick, false)}
+              {userRole !== "company_editor" && !shouldDisableNavigation && (
                 <>
-                <li
-                  className={
-                    selectedItem === "Admin Management" ? "selected" : ""
-                  }
-                  onClick={() => handleItemClick("Admin Management")}
-                >
-                  <FontAwesomeIcon icon={faUserCog} />{" "}
-                  {showText && "Admin Management"}
-                </li>
-                <li
-                className={selectedItem === "Transactions" ? "selected" : ""}
-                onClick={() => handleItemClick("Transactions")}
-              >
-                <FontAwesomeIcon icon={faWallet} /> {showText && "Transactions"}
-              </li>
-              <li
-                className={selectedItem === "Partnership" ? "selected" : ""}
-                onClick={() => handleItemClick("Partnership")}
-              >
-                <FontAwesomeIcon icon={faHandshake} /> {showText && "Partnership"}
-              </li>
-              <li
-                className={selectedItem === "Support" ? "selected" : ""}
-                onClick={() => handleItemClick("Support")}
-              >
-                <FontAwesomeIcon icon={faHeadset} /> {showText && "Support"}
-              </li>
+                  <li
+                    className={
+                      selectedItem === "Admin Management" ? "selected" : ""
+                    }
+                    onClick={() => handleItemClick("Admin Management")}
+                  >
+                    <FontAwesomeIcon icon={faUserCog} />{" "}
+                    {showText && "Admin Management"}
+                  </li>
+                  <li
+                    className={selectedItem === "Transactions" ? "selected" : ""}
+                    onClick={() => handleItemClick("Transactions")}
+                  >
+                    <FontAwesomeIcon icon={faWallet} /> {showText && "Transactions"}
+                  </li>
+                  <li
+                    className={selectedItem === "Partnership" ? "selected" : ""}
+                    onClick={() => handleItemClick("Partnership")}
+                  >
+                    <FontAwesomeIcon icon={faHandshake} /> {showText && "Partnership"}
+                  </li>
+                  <li
+                    className={selectedItem === "Support" ? "selected" : ""}
+                    onClick={() => handleItemClick("Support")}
+                  >
+                    <FontAwesomeIcon icon={faHeadset} /> {showText && "Support"}
+                  </li>
                 </>
 
                 
               )}
-              <li
-                className={selectedItem === "Company" ? "selected" : ""}
-                onClick={() => handleItemClick("Company")}
-              >
-                <FontAwesomeIcon icon={faBuilding} /> {showText && "Company"}
-              </li>
+              {shouldDisableNavigation
+                ? null
+                : protectedNavItem("Company", faBuilding, handleItemClick, false)}
             </>
           )}
         </ul>
