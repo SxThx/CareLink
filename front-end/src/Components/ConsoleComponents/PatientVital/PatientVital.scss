@@ -1,0 +1,135 @@
+@import "@/App.scss";
+
+.PatientVitals { 
+  .masonryGrid {
+    display: grid;
+    margin-left: -5px;
+    width: 100%;
+    max-width: 100vw;
+
+    .masonryGridColumn {
+      padding-left: 15px;
+      background-clip: padding-box;
+      .GridItem {
+        margin-bottom: 15px;
+        background-color: $Dark4;
+        border-radius: 10px;
+        padding: 20px;
+        color: white; // changed from $Dark3 to white
+        .VitalsTable {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+
+          th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: white; // force white text on table cells
+
+            th {
+              background-color: $CallToAction;
+              color: white;
+              &:nth-child(2) {
+                margin: 0;
+              }
+              .statusOf2fa {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                .enabled {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  svg {
+                    width: 12px;
+                    height: 12px;
+                    padding: 5px;
+                    background-color: $CallToAction;
+                    border-radius: 50%;
+                  }
+                  p {
+                    color: $CallToAction;
+                  }
+                }
+                .disabled {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  svg {
+                    width: 12px;
+                    height: 12px;
+                    padding: 5px;
+                    background-color: $Error;
+                    border-radius: 50%;
+                  }
+                  p {
+                    color: $Error;
+                  }
+                }
+              }
+            }
+          }
+
+          // .goToMembers, button {
+          //     all: unset;
+          //     cursor: pointer;
+          //     color: $LightPrimary;
+          //     background-color: $CallToAction;
+          //     padding: 7px 10px;
+          //     border-radius: 10px;
+          //     margin-top: 20px;
+
+          //     &:hover {
+          //         background-color: $CallToActionHover;
+          //     }
+
+          // }
+        }
+
+        h2 {
+          color: white; // changed from $DarkPrimary to white
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .PatientVitals {
+    .masonryGrid {
+      .masonryGridColumn {
+        .GridItem {
+          background-color: $Light4;
+          color: $Light1;
+          .GridContentContainer {
+            .VitalsTable {
+              .statusOf2fa {
+                .enabled {
+                  svg {
+                    background-color: $CallToAction;
+                  }
+                  p {
+                    color: $CallToAction;
+                  }
+                }
+                .disabled {
+                  svg {
+                    background-color: $Error;
+                  }
+                  p {
+                    color: $Error;
+                  }
+                }
+              }
+            }
+          }
+
+          h2 {
+            color: $LightPrimary;
+          }
+        }
+      }
+    }
+  }
+}

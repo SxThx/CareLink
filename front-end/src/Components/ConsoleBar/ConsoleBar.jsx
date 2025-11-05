@@ -9,20 +9,14 @@ import {
   faChevronCircleLeft,
   faExternalLinkAlt,
   faSignOutAlt,
-  faTools,
   faUserCog,
   faWallet,
-  faMoneyBill,
-  faExchangeAlt,
-  faMoneyCheck,
-  faMoneyCheckAlt,
   faHandshake,
-  faHand,
   faHeadset
 } from "@fortawesome/free-solid-svg-icons";
 import SiteLogo from "../../assets/Img/logo.png";
 import DashboardComponent from "#/ConsoleComponents/Dashboard/Dashboard";
-import AccountComponent from "#/ConsoleComponents/Account/Account";
+import PatientVitalComponent from "#/ConsoleComponents/PatientVital/PatientVital";
 import BrandComponent from "../ConsoleComponents/Brand/Brand";
 import PromotionsComponent from "../ConsoleComponents/Promotions/Promotions";
 import AdminManagementComponent from "../ConsoleComponents/AdminManagement/AdminManagement";
@@ -80,8 +74,8 @@ const ConsoleBar = () => {
             onPatientSelectionChange={setHasSelectedPatient}
           />
         );
-      case "Account":
-        return <AccountComponent />;
+      case "Patient Vitals":
+        return <PatientVitalComponent />;
       case "Promotions":
         return <PromotionsComponent />;
       case "Company":
@@ -200,10 +194,10 @@ const ConsoleBar = () => {
           </li>
           {shouldDisableNavigation ? null : (
             <li
-              className={selectedItem === "Account" ? "selected" : ""}
-              onClick={() => handleItemClick("Account")}
+              className={selectedItem === "Patient Vitals" ? "selected" : ""}
+              onClick={() => handleItemClick("Patient Vitals")}
             >
-              <FontAwesomeIcon icon={faUser} /> {showText && "Account"}
+              <FontAwesomeIcon icon={faUser} /> {showText && "Patient Vitals"}
             </li>
           )}
           {userRole === "super_admin" ? (
