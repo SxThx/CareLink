@@ -16,6 +16,10 @@
         border-radius: 10px;
         padding: 20px;
         color: $DarkPrimary;
+        .VitalsError {
+          margin-top: 20px;
+          color: $Error;
+        }
         .VitalsTable {
           width: 100%;
           border-collapse: collapse;
@@ -68,6 +72,9 @@
         .GridItem {
           background-color: $Light4;
           color: $LightPrimary;
+          .VitalsError {
+            color: $Error;
+          }
           .GridContentContainer {
             .VitalsTable {
               thead {

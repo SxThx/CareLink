@@ -225,6 +225,10 @@
         color: $Dark1;
         padding: 10px 0;
       }
+
+      .errorMessage {
+        color: $Error;
+      }
     }
 
   }
@@ -426,6 +430,10 @@
 
       .placeholder {
         color: $Light2;
+      }
+
+      .errorMessage {
+        color: $Error;
       }
     }
 

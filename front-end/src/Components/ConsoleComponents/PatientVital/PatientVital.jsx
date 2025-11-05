@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-css';
 import "./PatientVital.scss";
+import { loadPatientVitalsFromExcel } from "@/services/patientVitalsLoader";
 
 // PatientVital component displays patient vitals
 // Expects a prop called selectedpatient, the patient id to use as key to load data
 // Data is to be parsed from csv via service API (Py script)
 const PatientVital = () => {
-  const [patientVitals, setPatientVitals] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const [vitalsDirectory, setVitalsDirectory] = useState([]);
+  const [patientVitals, setPatientVitals] = useState([]);
+  const [loadingDirectory, setLoadingDirectory] = useState(true);
+  const [vitalsError, setVitalsError] = useState(null);
 
   // Sync selected patient from localStorage (set by Dashboard)
   useEffect(() => {
@@ -35,58 +38,114 @@ const PatientVital = () => {
   }, []);
 
   useEffect(() => {
-    if (!selectedPatient) {
+    let cancelled = false;
+
+    const loadVitals = async () => {
+      setLoadingDirectory(true);
+      setVitalsError(null);
+      try {
+        const vitals = await loadPatientVitalsFromExcel();
+        if (!cancelled) {
+          setVitalsDirectory(vitals);
+        }
+      } catch (error) {
+        console.error("Unable to load patient vitals:", error);
+        if (!cancelled) {
+          setVitalsError(error instanceof Error ? error : new Error("Unknown error"));
+          setVitalsDirectory([]);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoadingDirectory(false);
+        }
+      }
+    };
+
+    loadVitals();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!selectedPatient || !selectedPatient.nric) {
       setPatientVitals([]);
-      setLoading(false);
       return;
     }
-    setLoading(true);
-    // Replace with a real API call keyed by selectedPatient.id/nric/etc.
-    setTimeout(() => {
-      // Dummy example vitals
-      const vitals = [
-        {
-          takenOn: new Date().toLocaleString(),
-          temperature: 36.7,
-          heartRate: 76,
-          respiratoryRate: 18,
-          oxygenSaturation: 98,
-          type: "Manual",
-          levelOfO2: "Normal",
-          twoHPP: 7.5,
-          bpLying: "120/75",
-          bpSitting: "122/77",
-          bpStanding: "119/74",
-          height: 172,
-          weight: 68,
-          remarks: "Stable"
-        },
-        {
-          takenOn: new Date(Date.now() - 3600_000).toLocaleString(),
-          temperature: 37.1,
-          heartRate: 80,
-          respiratoryRate: 19,
-          oxygenSaturation: 99,
-          type: "Auto",
-          levelOfO2: "Normal",
-          twoHPP: 7.2,
-          bpLying: "124/78",
-          bpSitting: "125/79",
-          bpStanding: "123/76",
-          height: 172,
-          weight: 69,
-          remarks: ""
-        }
-      ];
-      setPatientVitals(vitals);
-      setLoading(false);
-    }, 500);
-  }, [selectedPatient]);
+
+    if (!vitalsDirectory.length) {
+      setPatientVitals([]);
+      return;
+    }
+
+    const filtered = vitalsDirectory.filter(
+      (vital) => vital.nric && vital.nric.toUpperCase() === selectedPatient.nric.toUpperCase()
+    );
+    setPatientVitals(filtered);
+  }, [selectedPatient, vitalsDirectory]);
 
   // Pick display identifier for selectedPatient
   const patientDisplayId = selectedPatient
     ? (selectedPatient.id || selectedPatient.nric || "(unknown NRIC)")
     : null;
+
+  const formatDateTime = (value) => {
+    if (value === null || value === undefined || value === "") {
+      return "";
+    }
+
+    let date;
+    if (typeof value === "number") {
+      const milliseconds = Math.round((value - 25569) * 86400 * 1000);
+      date = new Date(milliseconds);
+    } else {
+      date = new Date(value);
+    }
+
+    if (!Number.isNaN(date.getTime())) {
+      return date.toLocaleString();
+    }
+
+    return value;
+  };
+
+  const formatDateOnly = (value) => {
+    const formatted = formatDateTime(value);
+    if (!formatted) {
+      return "";
+    }
+
+    const date = new Date(formatted);
+    return Number.isNaN(date.getTime()) ? formatted : date.toLocaleDateString();
+  };
+
+  const formatTimeOnly = (value) => {
+    const formatted = formatDateTime(value);
+    if (!formatted) {
+      return "";
+    }
+
+    const date = new Date(formatted);
+    return Number.isNaN(date.getTime()) ? formatted : date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
+
+  const formatNumber = (value, fractionDigits = null) => {
+    if (value === null || value === undefined || value === "") {
+      return "";
+    }
+
+    const numericValue = typeof value === "number" ? value : Number(value);
+    if (Number.isNaN(numericValue)) {
+      return value;
+    }
+
+    if (fractionDigits !== null && Number.isFinite(numericValue)) {
+      return numericValue.toFixed(fractionDigits);
+    }
+
+    return numericValue.toString();
+  };
 
   return (
     <div className="PatientVitals" >
@@ -102,19 +161,22 @@ const PatientVital = () => {
             (as of {new Date().toLocaleDateString()})
           </p>
           <div className="GridContentContainer">
-            {loading ? (
+            {loadingDirectory ? (
               <div>Loading vitals...</div>
+            ) : vitalsError ? (
+              <div className="VitalsError">Unable to load vitals data from Excel.</div>
+            ) : !selectedPatient ? (
+              <div>Select a patient to view vitals.</div>
             ) : (
               <table className="VitalsTable">
                 <thead>
                   <tr>
-                    <th>Taken On</th>
+                    <th>Vital Date</th>
+                    <th>Time</th>
                     <th>Temp<br />(&#8451;)</th>
-                    <th>PR<br /> (/min)</th>
-                    <th>RR<br /> (/min)</th>
-                    <th>SpO2 (%)</th>
-                    <th>Type</th>
-                    <th>Level<br />of O2</th>
+                    <th>Pulse<br />(/min)</th>
+                    <th>RR<br />(/min)</th>
+                    <th>SpO2<br />(%)</th>
                     <th>2HPP<br />(mmol/L)</th>
                     <th>BP<br />(Lying)<br />(mm hg)</th>
                     <th>BP<br />(Sitting)<br />(mm hg)</th>
@@ -126,21 +188,20 @@ const PatientVital = () => {
                 </thead>
                 <tbody>
                   {Array.isArray(patientVitals) && patientVitals.length > 0 ? (
-                    patientVitals.map((vital, i) => (
-                      <tr key={i}>
-                        <td>{vital.takenOn}</td>
-                        <td>{vital.temperature}</td>
-                        <td>{vital.heartRate}</td>
-                        <td>{vital.respiratoryRate}</td>
-                        <td>{vital.oxygenSaturation}</td>
-                        <td>{vital.type}</td>
-                        <td>{vital.levelOfO2}</td>
-                        <td>{vital.twoHPP}</td>
+                    patientVitals.map((vital) => (
+                      <tr key={vital.id}>
+                        <td>{formatDateOnly(vital.takenOn || vital.vitalDate)}</td>
+                        <td>{formatTimeOnly(vital.takenOn || vital.vitalTime)}</td>
+                        <td>{formatNumber(vital.temperature, 1)}</td>
+                        <td>{formatNumber(vital.heartRate)}</td>
+                        <td>{formatNumber(vital.respiratoryRate)}</td>
+                        <td>{formatNumber(vital.oxygenSaturation)}</td>
+                        <td>{formatNumber(vital.twoHPP, 1)}</td>
                         <td>{vital.bpLying}</td>
                         <td>{vital.bpSitting}</td>
                         <td>{vital.bpStanding}</td>
-                        <td>{vital.height}</td>
-                        <td>{vital.weight}</td>
+                        <td>{formatNumber(vital.height)}</td>
+                        <td>{formatNumber(vital.weight)}</td>
                         <td>{vital.remarks}</td>
                       </tr>
                     ))
