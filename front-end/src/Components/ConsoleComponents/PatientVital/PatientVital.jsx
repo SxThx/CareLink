@@ -44,15 +44,15 @@ const PatientVital = () => {
     // Replace with a real API call keyed by selectedPatient.id/nric/etc.
     setTimeout(() => {
       // Dummy example vitals
+      // Based on: Vital Date	Time	Temperature (°C)	Pulse Rate (/min)	Respiratory Rate (/min)	SpO2 (%)	2HPP (mmol/ L)	BP (Lying) (mm hg)	BP (Sitting) (mm hg)	BP (Standing) (mm hg)	Height (cm)	Weight (kg)	Remarks
       const vitals = [
         {
-          takenOn: new Date().toLocaleString(),
+          vitalDate: "22/11/2025",
+          time: "10:00:00",
           temperature: 36.7,
-          heartRate: 76,
+          pulseRate: 76,
           respiratoryRate: 18,
-          oxygenSaturation: 98,
-          type: "Manual",
-          levelOfO2: "Normal",
+          spO2: 98,
           twoHPP: 7.5,
           bpLying: "120/75",
           bpSitting: "122/77",
@@ -62,13 +62,12 @@ const PatientVital = () => {
           remarks: "Stable"
         },
         {
-          takenOn: new Date(Date.now() - 3600_000).toLocaleString(),
+          vitalDate: "20/10/2025",
+          time: "14:00:00",
           temperature: 37.1,
-          heartRate: 80,
+          pulseRate: 80,
           respiratoryRate: 19,
-          oxygenSaturation: 99,
-          type: "Auto",
-          levelOfO2: "Normal",
+          spO2: 99,
           twoHPP: 7.2,
           bpLying: "124/78",
           bpSitting: "125/79",
@@ -108,19 +107,18 @@ const PatientVital = () => {
               <table className="VitalsTable">
                 <thead>
                   <tr>
-                    <th>Taken On</th>
-                    <th>Temp<br />(&#8451;)</th>
-                    <th>PR<br /> (/min)</th>
-                    <th>RR<br /> (/min)</th>
+                    <th>Vital Date</th>
+                    <th>Time</th>
+                    <th>Temperature (&#8451;)</th>
+                    <th>Pulse Rate (/min)</th>
+                    <th>Respiratory Rate (/min)</th>
                     <th>SpO2 (%)</th>
-                    <th>Type</th>
-                    <th>Level<br />of O2</th>
-                    <th>2HPP<br />(mmol/L)</th>
-                    <th>BP<br />(Lying)<br />(mm hg)</th>
-                    <th>BP<br />(Sitting)<br />(mm hg)</th>
-                    <th>BP<br />(Standing)<br />(mm hg)</th>
-                    <th>Height<br />(cm)</th>
-                    <th>Weight<br />(kg)</th>
+                    <th>2HPP (mmol/ L)</th>
+                    <th>BP (Lying) (mm hg)</th>
+                    <th>BP (Sitting) (mm hg)</th>
+                    <th>BP (Standing) (mm hg)</th>
+                    <th>Height (cm)</th>
+                    <th>Weight (kg)</th>
                     <th>Remarks</th>
                   </tr>
                 </thead>
@@ -128,13 +126,12 @@ const PatientVital = () => {
                   {Array.isArray(patientVitals) && patientVitals.length > 0 ? (
                     patientVitals.map((vital, i) => (
                       <tr key={i}>
-                        <td>{vital.takenOn}</td>
+                        <td>{vital.vitalDate}</td>
+                        <td>{vital.time}</td>
                         <td>{vital.temperature}</td>
-                        <td>{vital.heartRate}</td>
+                        <td>{vital.pulseRate}</td>
                         <td>{vital.respiratoryRate}</td>
-                        <td>{vital.oxygenSaturation}</td>
-                        <td>{vital.type}</td>
-                        <td>{vital.levelOfO2}</td>
+                        <td>{vital.spO2}</td>
                         <td>{vital.twoHPP}</td>
                         <td>{vital.bpLying}</td>
                         <td>{vital.bpSitting}</td>
@@ -146,7 +143,7 @@ const PatientVital = () => {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={14}>No vitals data available.</td>
+                      <td colSpan={13}>No vitals data available.</td>
                     </tr>
                   )}
                 </tbody>
