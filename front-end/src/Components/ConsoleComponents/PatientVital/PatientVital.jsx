@@ -91,7 +91,7 @@ const PatientVital = () => {
   return (
     <div className="PatientVitals" >
       <Masonry
-        breakpointCols={{ default: 2, 800: 1 }}
+        breakpointCols={{ default: 1, 800: 1 }}
         className="masonryGrid"
         columnClassName="masonryGridColumn"
       >

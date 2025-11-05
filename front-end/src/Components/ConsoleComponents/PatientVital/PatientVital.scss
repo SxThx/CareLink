@@ -15,80 +15,46 @@
         background-color: $Dark4;
         border-radius: 10px;
         padding: 20px;
-        color: white; // changed from $Dark3 to white
+        color: $DarkPrimary;
         .VitalsTable {
           width: 100%;
           border-collapse: collapse;
           margin-top: 20px;
+          background-color: transparent;
 
-          th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            color: white; // force white text on table cells
-
-            th {
-              background-color: $CallToAction;
-              color: white;
-              &:nth-child(2) {
-                margin: 0;
-              }
-              .statusOf2fa {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                .enabled {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  svg {
-                    width: 12px;
-                    height: 12px;
-                    padding: 5px;
-                    background-color: $CallToAction;
-                    border-radius: 50%;
-                  }
-                  p {
-                    color: $CallToAction;
-                  }
-                }
-                .disabled {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  svg {
-                    width: 12px;
-                    height: 12px;
-                    padding: 5px;
-                    background-color: $Error;
-                    border-radius: 50%;
-                  }
-                  p {
-                    color: $Error;
-                  }
-                }
-              }
+          thead {
+            tr {
+              background-color: rgba($CallToAction, 0.15);
             }
           }
 
-          // .goToMembers, button {
-          //     all: unset;
-          //     cursor: pointer;
-          //     color: $LightPrimary;
-          //     background-color: $CallToAction;
-          //     padding: 7px 10px;
-          //     border-radius: 10px;
-          //     margin-top: 20px;
+          th,
+          td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba($Dark1, 0.25);
+            color: $DarkPrimary;
+          }
 
-          //     &:hover {
-          //         background-color: $CallToActionHover;
-          //     }
+          tbody {
+            tr:nth-child(even) {
+              background-color: rgba($Dark3, 0.35);
+            }
 
-          // }
+            tr:hover {
+              background-color: rgba($CallToAction, 0.15);
+            }
+          }
+
+          tfoot {
+            tr {
+              font-weight: 600;
+            }
+          }
         }
 
         h2 {
-          color: white; // changed from $DarkPrimary to white
+          color: $DarkPrimary;
         }
       }
     }
@@ -101,25 +67,31 @@
       .masonryGridColumn {
         .GridItem {
           background-color: $Light4;
-          color: $Light1;
+          color: $LightPrimary;
           .GridContentContainer {
             .VitalsTable {
-              .statusOf2fa {
-                .enabled {
-                  svg {
-                    background-color: $CallToAction;
-                  }
-                  p {
-                    color: $CallToAction;
-                  }
+              thead {
+                tr {
+                  background-color: rgba($CallToAction, 0.1);
                 }
-                .disabled {
-                  svg {
-                    background-color: $Error;
-                  }
-                  p {
-                    color: $Error;
-                  }
+                th {
+                  color: $LightPrimary;
+                }
+              }
+
+              th,
+              td {
+                color: $LightPrimary;
+                border-bottom: 1px solid rgba($Light2, 0.3);
+              }
+
+              tbody {
+                tr:nth-child(even) {
+                  background-color: rgba($Light3, 0.4);
+                }
+
+                tr:hover {
+                  background-color: rgba($CallToAction, 0.18);
                 }
               }
             }
