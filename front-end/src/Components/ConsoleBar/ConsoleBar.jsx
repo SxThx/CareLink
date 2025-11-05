@@ -17,16 +17,9 @@ import {
 import SiteLogo from "../../assets/Img/logo.png";
 import DashboardComponent from "#/ConsoleComponents/Dashboard/Dashboard";
 import PatientVitalComponent from "#/ConsoleComponents/PatientVital/PatientVital";
-import BrandComponent from "../ConsoleComponents/Brand/Brand";
-import PromotionsComponent from "../ConsoleComponents/Promotions/Promotions";
-import AdminManagementComponent from "../ConsoleComponents/AdminManagement/AdminManagement";
-import AccountReviewComponent from "../ConsoleComponents/SuperAdminConsoleComponents/AccountReview/AccountReview";
-import CompaniesComponent from "../ConsoleComponents/SuperAdminConsoleComponents/Companies/Companies";
-import TransactionsComponent from "../ConsoleComponents/Transactions/Transactions";
-import PartnershipComponent from "../ConsoleComponents/Partnership/Partnership";
+import MedicationComponent from "../ConsoleComponents/Medication/Medication";
+import ImmunisationComponent from "../ConsoleComponents/Immunisation/Immunisation";
 import ConsoleNavbar from "../ConsoleNavbar/ConsoleNavbar";
-import SupportComponent from "../ConsoleComponents/Support/Support"
-import AdminSupportComponent from "../ConsoleComponents/SuperAdminConsoleComponents/AdminSupport/AdminSupport";
 import { Link } from "react-router-dom";
 import "./ConsoleBar.scss";
 
@@ -76,24 +69,10 @@ const ConsoleBar = () => {
         );
       case "Patient Vitals":
         return <PatientVitalComponent />;
-      case "Promotions":
-        return <PromotionsComponent />;
-      case "Company":
-        return <BrandComponent />;
-      case "Admin Management":
-        return <AdminManagementComponent />;
-      case "Account Review":
-        return <AccountReviewComponent />;
-      case "Companies":
-        return <CompaniesComponent />;
-      case "Transactions":
-        return <TransactionsComponent />;
-        case "Partnership":
-          return <PartnershipComponent />;
-          case "Support":
-            return <SupportComponent />;
-            case "Admin Support":
-              return <AdminSupportComponent />;
+      case "Medication":
+        return <MedicationComponent />;
+      case "Immunisation":
+        return <ImmunisationComponent />;
       default:
         return null;
     }
@@ -204,13 +183,10 @@ const ConsoleBar = () => {
             <>
               {shouldDisableNavigation
                 ? null
-                : protectedNavItem("Account Review", faUserCog, handleItemClick, false)}
+                : protectedNavItem("Medication", faUserCog, handleItemClick, false)}
               {shouldDisableNavigation
                 ? null
-                : protectedNavItem("Companies", faBuilding, handleItemClick, false)}
-              {shouldDisableNavigation
-                ? null
-                : protectedNavItem("Admin Support", faHeadset, handleItemClick, false)}
+                : protectedNavItem("Immunisation", faWallet, handleItemClick, false)}
             </>
           ) : (
             <>
@@ -229,10 +205,10 @@ const ConsoleBar = () => {
                     {showText && "Admin Management"}
                   </li>
                   <li
-                    className={selectedItem === "Transactions" ? "selected" : ""}
-                    onClick={() => handleItemClick("Transactions")}
+                    className={selectedItem === "Immunisation" ? "selected" : ""}
+                    onClick={() => handleItemClick("Immunisation")}
                   >
-                    <FontAwesomeIcon icon={faWallet} /> {showText && "Transactions"}
+                    <FontAwesomeIcon icon={faWallet} /> {showText && "Immunisation"}
                   </li>
                   <li
                     className={selectedItem === "Partnership" ? "selected" : ""}

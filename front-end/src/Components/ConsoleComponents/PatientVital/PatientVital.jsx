@@ -207,7 +207,7 @@ const PatientVital = () => {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={14}>No vitals data available.</td>
+                      <td colSpan={13}>No vitals data available.</td>
                     </tr>
                   )}
                 </tbody>

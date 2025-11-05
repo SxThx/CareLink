@@ -1,0 +1,107 @@
+@import "@/App.scss";
+
+.Medication { 
+  .masonryGrid {
+    display: grid;
+    margin-left: -5px;
+    width: 100%;
+    max-width: 100vw;
+
+    .masonryGridColumn {
+      padding-left: 15px;
+      background-clip: padding-box;
+      .GridItem {
+        margin-bottom: 15px;
+        background-color: $Dark4;
+        border-radius: 10px;
+        padding: 20px;
+        color: $DarkPrimary;
+        .MedicationTable {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+          background-color: transparent;
+
+          thead {
+            tr {
+              background-color: rgba($CallToAction, 0.15);
+            }
+          }
+
+          th,
+          td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba($Dark1, 0.25);
+            color: $DarkPrimary;
+          }
+
+          tbody {
+            tr:nth-child(even) {
+              background-color: rgba($Dark3, 0.35);
+            }
+
+            tr:hover {
+              background-color: rgba($CallToAction, 0.15);
+            }
+          }
+
+          tfoot {
+            tr {
+              font-weight: 600;
+            }
+          }
+        }
+
+        h2 {
+          color: $DarkPrimary;
+        }
+      }
+    }
+  }
+}
+
+#light {
+  .Medication {
+    .masonryGrid {
+      .masonryGridColumn {
+        .GridItem {
+          background-color: $Light4;
+          color: $LightPrimary;
+          .GridContentContainer {
+            .MedicationTable {
+              thead {
+                tr {
+                  background-color: rgba($CallToAction, 0.1);
+                }
+                th {
+                  color: $LightPrimary;
+                }
+              }
+
+              th,
+              td {
+                color: $LightPrimary;
+                border-bottom: 1px solid rgba($Light2, 0.3);
+              }
+
+              tbody {
+                tr:nth-child(even) {
+                  background-color: rgba($Light3, 0.4);
+                }
+
+                tr:hover {
+                  background-color: rgba($CallToAction, 0.18);
+                }
+              }
+            }
+          }
+
+          h2 {
+            color: $LightPrimary;
+          }
+        }
+      }
+    }
+  }
+}
