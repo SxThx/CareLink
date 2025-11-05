@@ -296,28 +296,6 @@ const Dashboard = ({ onItemClick, onPatientSelectionChange }) => {
     setSearchDigits("");
   };
 
-  let approval_status;
-  if (userData.approval_status === "approved") {
-    approval_status = (
-      <div className="enabled">
-        <FontAwesomeIcon icon={faCheck} /><p>Approved</p>
-      </div>
-    );
-  } else {
-    approval_status = (
-      <div className="disabled">
-        <FontAwesomeIcon icon={faTimes} /><p>Rejected</p>
-      </div>
-    );
-  }
-
-  const handleGoToAccount = () => {
-    onItemClick("Account");
-  };
-
-  const handleGoToCompany = () => {
-    onItemClick("Company");
-  };
 
   const breakpointColumnsObj = {
     default: 3,
@@ -490,19 +468,44 @@ const Dashboard = ({ onItemClick, onPatientSelectionChange }) => {
               )}
             </div>
           </div>
-          {/* <div className="GridItem">
-
-            <div className="GridContentContainer">
-
-              <div className="Accinfo">
-                <h2>Something Wong</h2>
-                <p>Age: 25</p>
-                <p>Sex: Male</p>
-              </div>
-              <button className="goToAccount" onClick={handleGoToAccount}>More Information</button>
+          {/* Comment Box and Send Button */}
+          <div className="GridItem commentBox">
+            <h2>Comment Box</h2>
+            <p className="GridItemDescription">
+              Add a comment to the selected patient.
+            </p>
+            <div className="GridContentContainer CommentBoxContent">
+          <div style={{ marginTop: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              value={""}
+              style={{
+                flex: 1,
+                padding: "8px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+                fontSize: "16px",
+              }}
+            />
+            <button
+              onClick={() => {}}
+              style={{
+                padding: "8px 18px",
+                borderRadius: "4px",
+                background: "#1976d2",
+                color: "#fff",
+                border: "none",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              disabled={false}
+            >
+              Send comment
+            </button>
             </div>
-          </div> */}
-
+            </div>
+            </div>
         </Masonry>
       </div>
     </div>
